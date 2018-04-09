@@ -1,5 +1,5 @@
 # AlexaServiceRequest
-Create Service Request for the Sugar Land PW
+Create Service Request for the Sugar Land Public Works, using Alexa
 
 Developing Custom Skills for Alexa
 
