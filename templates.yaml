@@ -3,13 +3,19 @@ hello: Hello, {{firstname}}
 welcome: Welcome to the City of Sugar Land Service Request Assistant. Do you have an issue to report?
 welcome_long: With the City of Sugar Land Service Request Assistant you will be able to share your concern, creating a Service Request so the respective Public Works Department can investigate and fix the issue. Now, is there anything you would like to report to the Public Works department?
 
+goodbye: Goodbye. Have a good day!!
+
 location_question: Ok. What is the location of the issue?
 
-problem_type: Got it. But what is the category of the problem?
+#problem_type: Got it. But what is the category of the problem?
+problem_type: Got it. Which of the following categories best represent the type of the issue... {{ SRcategories|join(", ") }}.
 problem_type_examples: The category of the problem could be {{ SRcategories|join(", ") }}. What is the category of the problem?
-problem_detail: Please, go ahead and describe the concern you have.
+
+#problem_detail: Please, go ahead and describe the concern you have.
+problem_detail: Please, go ahead and describe the concern you have, starting the sentence with; "The problem is"...
 problem_detail_reprompt: I could not get it. Can you please try and describe it in simple words?
 
 resident_info: Perfect. Lastly, in order to receive feedback on this concern, what is your name and phone number?
 
-goodbye: Goodbye. Have a good day!!
+success_msg: There you go! Your concern has been succesfully reported to the City of Sugar Land! Expect someone to call you in the next few days in case they need more information. Have a good one!
+failure_msg: I am sorry. Something went wrong and the provided information was not sent to the City of Sugar Land. If this persists, please feel free to call 311.
