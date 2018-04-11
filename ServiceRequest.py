@@ -9,7 +9,7 @@ from flask_ask import Ask, request, statement, question, session
 
 app = Flask(__name__)
 
-ask = Ask(app, "/")
+ask = Ask(app, "/alexa")
 
 logging.getLogger("flask_ask").setLevel(logging.DEBUG)
 
