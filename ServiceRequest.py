@@ -23,6 +23,13 @@ def launch():
     reprompt_text = render_template('welcome_long')
     return question(welcome_msg).reprompt(reprompt_text)
 
+
+@ask.intent("AMAZON.HelpIntent")
+def help():
+    msg = render_template('welcome_long')
+    return statement(msg)
+
+
 @ask.intent("AMAZON.StopIntent")
 @ask.intent("AMAZON.CancelIntent")
 @ask.intent("AMAZON.NoIntent")
@@ -30,18 +37,21 @@ def goodbye():
     msg = render_template('goodbye')
     return statement(msg)
 
+
 @ask.intent("AMAZON.YesIntent")
 def reportIssue():  
     location_question = render_template('location_question')
     return question(location_question)
 
 
-@ask.intent("LocationIntent") #, convert={'first': int, 'second': int, 'third': int})
+@ask.intent("LocationIntent") #, convert={'first': int, 'second': int, 'third': int}) | convert={'day': date}
 #def location(location):
-def location(direction, intersection):
+def location(direction_begin, intersection, direction_end):
 
-    if direction is not None:
-        session.attributes['location'] = "heading " + direction + " on " + intersection
+    if direction_begin is not None:
+        session.attributes['location'] = "heading " + direction_begin + " on " + intersection
+    elif direction_end is not None:
+        session.attributes['location'] = intersection + " heading " + direction_end
     elif intersection is not None:
          session.attributes['location'] = intersection
 
@@ -51,6 +61,7 @@ def location(direction, intersection):
     problem_type_examples = render_template('problem_type_examples', SRcategories = SRcategories)
 
     return question(problem_type).reprompt(problem_type_examples) # prepare to ask the next question. If Utterance match, the respective Intent will be identified
+
 
 @ask.intent("ProblemTypeIntent")
 def problemType(problem_type):
@@ -62,6 +73,7 @@ def problemType(problem_type):
 
     return question(problem_detail).reprompt(problem_detail_repromt)
 
+
 @ask.intent("ProblemDetailIntent")
 def problemDetail(problem_detail):
     if problem_detail is not None:
@@ -69,6 +81,7 @@ def problemDetail(problem_detail):
     
     resident_info = render_template('resident_info')
     return question(resident_info)
+
 
 @ask.intent("ResidentInfoIntent")
 def residentInfo(name, phone_number):
@@ -94,6 +107,8 @@ def residentInfo(name, phone_number):
         
     return statement(final_msg)
 
+
+##################################
 if __name__ == '__main__':
 
     app.run(debug=True)
