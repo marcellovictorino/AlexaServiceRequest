@@ -5,7 +5,7 @@ from email.mime.text import MIMEText
 def sendEmail (location, concern_category, description, name, phoneNumber ):
     # Gmail account login info
     user = 'sugarlandtmc@gmail.com'
-    password = '1TrafficSignals'
+    password = 'tr9ff1cS1gn9l$01'
 
     # Connection SMTP with Gmail
     server_ssl = smtplib.SMTP_SSL('smtp.gmail.com')
