@@ -80,6 +80,7 @@ def problemDetail(problem_detail):
         session.attributes['description'] = problem_detail
     
     resident_name = render_template('resident_name')
+    resident_name_reprompt = render_template('resident_name_reprompt')
     return question(resident_name).reprompt(resident_name_reprompt)
 
 
@@ -89,6 +90,7 @@ def residentName(name):
         session.attributes['residentName'] = name
     
     resident_number = render_template('resident_number')
+    resident_number_reprompt = render_template('resident_number_reprompt')
     return question(resident_number).reprompt(resident_number_reprompt)
 
 @ask.intent("ResidentNumberIntent")
