@@ -79,21 +79,24 @@ def problemDetail(problem_detail):
     if problem_detail is not None:
         session.attributes['description'] = problem_detail
     
-    resident_info = render_template('resident_info')
-    return question(resident_info)
+    resident_name = render_template('resident_name')
+    return question(resident_name).reprompt(resident_name_reprompt)
 
 
-@ask.intent("ResidentInfoIntent")
-def residentInfo(name, phone_number):
-    if name is None:
-        name = 'Anonymous'
+@ask.intent("ResidentNameIntent")
+def residentName(name):
+    if name is not None:
+        session.attributes['residentName'] = name
     
-    if phone_number is None:
-        phone_number = 'Not provided'
+    resident_number = render_template('resident_number')
+    return question(resident_number).reprompt(resident_number_reprompt)
+
+@ask.intent("ResidentNumberIntent")
+def residentNumber(phone_number):
+    if phone_number is not None:
+        session.attributes['residentPhoneNumber'] = phone_number
     
-    session.attributes['residentName'] = name
-    session.attributes['residentPhoneNumber'] = phone_number
-    
+    name = session.attributes['residentName']
     location = session.attributes['location']
     concernCategory = session.attributes['category']
     description = session.attributes['description']
