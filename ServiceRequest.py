@@ -1,6 +1,6 @@
 import logging
 from random import randint
-import urllib3
+# import urllib3
 from send_email import sendEmail
 
 from flask import Flask, render_template
@@ -46,7 +46,7 @@ def reportIssue():
 
 @ask.intent("LocationIntent") #, convert={'first': int, 'second': int, 'third': int}) | convert={'day': date}
 #def location(location):
-def location(direction_begin, intersection, direction_end):
+def location(direction_begin, intersection, direction_end, address):
 
     if direction_begin is not None:
         session.attributes['location'] = "heading " + direction_begin + " on " + intersection
@@ -54,6 +54,8 @@ def location(direction_begin, intersection, direction_end):
         session.attributes['location'] = intersection + " heading " + direction_end
     elif intersection is not None:
          session.attributes['location'] = intersection
+    elif address is not None:
+         session.attributes['location'] = address
 
     SRcategories = ['Traffic Sign', 'Traffic Signal', 'Drainage', 'Water', 'Pothole', 'or Streets']
 
@@ -85,18 +87,25 @@ def problemDetail(problem_detail):
 
 
 @ask.intent("ResidentNameIntent")
-def residentName(name):
+def residentName(name, name_two):
     if name is not None:
         session.attributes['residentName'] = name
-    
-    resident_number = render_template('resident_number')
-    resident_number_reprompt = render_template('resident_number_reprompt')
+        residentName = name
+
+    if name_two is not None:
+        session.attributes['residentName'] = name_two
+        residentName = name_two
+
+    residentName = residentName.split(' ')
+
+    resident_number = render_template('resident_number', name = residentName)
+    resident_number_reprompt = render_template('resident_number_reprompt', name = residentName)
     return question(resident_number).reprompt(resident_number_reprompt)
 
 @ask.intent("ResidentNumberIntent")
-def residentNumber(phone_number):
-    if phone_number is not None:
-        session.attributes['residentPhoneNumber'] = phone_number
+def residentNumber(phoneNumber):
+    if phoneNumber is not None:
+        session.attributes['residentPhoneNumber'] = phoneNumber
     
     name = session.attributes['residentName']
     location = session.attributes['location']
@@ -104,7 +113,7 @@ def residentNumber(phone_number):
     description = session.attributes['description']
 
     try:
-        sendEmail(location, concernCategory, description, name, phone_number)
+        sendEmail(location, concernCategory, description, name, phoneNumber)
         final_msg = render_template('success_msg')
     
     except:

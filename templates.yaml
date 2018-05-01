@@ -19,8 +19,8 @@ resident_info: Perfect. Lastly, in order to receive feedback on this concern, wh
 resident_name: Perfect. Lastly, in order to provide feedback on this concern, I am going to need some personal information. What is your name?
 resident_name_reprompt: I really need this information to create the Service Request. Please, can you tell me your name?
 # resident_name: Perfect. Last but not least... I never got your name.
-resident_number: Thanks, {{ name[0] }}. And what is your phone number?
-resident_number_reprompt: This is also very important, {{ name[0] }}. Can you please tell me your phone number?
+resident_number: Thanks {{ name[0] }}. And what is your phone number?
+resident_number_reprompt: This is also very important {{ name[0] }}. Can you please tell me your phone number?
 
-success_msg: There you go! Your concern has been successfully reported to the City of Sugar Land! Expect someone to call you in the next few days in case they need more information. Have a good one!
-failure_msg: I am sorry. Something went wrong and the provided information was not sent to the City of Sugar Land. If this persists, please feel free to call 311.
+success_msg: There you go! Your concern has been successfully reported to the City of Sugar Land. Expect someone to call you in the next few days in case they need more information. Have a good one!
+failure_msg: I am sorry. Something went wrong and the provided information was not sent to the City of Sugar Land. If this persists, please feel free to call three one one.
