@@ -3,9 +3,9 @@ hello: Hello, {{firstname}}
 welcome: Welcome to the City of Sugar Land Service Request Assistant. Do you have a concern to report?
 welcome_long: With the City of Sugar Land Service Request Assistant you will be able to share your concern, creating a Service Request so the respective Public Works Department can further investigate. Now, is there anything you would like to report to the Public Works department?
 
-goodbye: Goodbye. Have a good day!!
+goodbye: Goodbye. Have a good day!
 
-location_question: Ok. What is the location of the issue?
+location_question: Ok. What is the location of the concern?
 
 #problem_type: Got it. But what is the category of the problem?
 problem_type: Got it. Which of the following categories best represent the type of the concern... {{ SRcategories|join(", ") }}.
@@ -14,13 +14,14 @@ problem_type_examples: The category of the concern can be {{ SRcategories|join("
 problem_detail: Please, go ahead and describe the concern you have, starting the sentence with; "The concern is"...
 problem_detail_reprompt: I could not get it. Can you please try and describe it in simple words?
 
-resident_info: Perfect. Lastly, in order to receive feedback on this concern, what is your name and phone number?
+# resident_info: Perfect. Lastly, in order to receive feedback on this concern, what is your name and phone number?
 
-resident_name: Perfect. Lastly, in order to provide feedback on this concern, I am going to need some personal information. What is your name?
+resident_name: Perfect. Lastly, in order to follow up on this concern, I am going to need some personal information. What is your name?
 resident_name_reprompt: I really need this information to create the Service Request. Please, can you tell me your name?
 # resident_name: Perfect. Last but not least... I never got your name.
 resident_number: Thanks {{ name[0] }}. And what is your phone number?
 resident_number_reprompt: This is also very important {{ name[0] }}. Can you please tell me your phone number?
 
-success_msg: There you go! Your concern has been successfully reported to the City of Sugar Land. Expect someone to call you in the next few days in case they need more information. Have a good one!
+success_msg: There you go! Your concern has been successfully reported to the City of Sugar Land. If staff needs more information on this concern, someone will contact you. Have a good one!
+# Expect someone to call you in the next few days in case they need more information. Have a good one!
 failure_msg: I am sorry. Something went wrong and the provided information was not sent to the City of Sugar Land. If this persists, please feel free to call three one one.

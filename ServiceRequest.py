@@ -57,7 +57,8 @@ def location(direction_begin, intersection, direction_end, address):
     elif address is not None:
          session.attributes['location'] = address
 
-    SRcategories = ['Traffic Sign', 'Traffic Signal', 'Drainage', 'Water', 'Pothole', 'or Streets']
+    # SRcategories = ['Traffic Sign', 'Traffic Signal', 'Drainage', 'Water', 'Pothole', 'or Streets']
+    SRcategories = ['Traffic', 'Drainage', 'Water', 'Pothole', 'or Streets']
 
     problem_type = render_template('problem_type', SRcategories = SRcategories)
     problem_type_examples = render_template('problem_type_examples', SRcategories = SRcategories)

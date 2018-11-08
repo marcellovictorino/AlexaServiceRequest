@@ -1,0 +1,7 @@
+
+1) Alexa Development
+https://github.com/johnwheeler/flask-ask
+
+2) Google Assistant
+https://github.com/treethought/flask-assistant
+
